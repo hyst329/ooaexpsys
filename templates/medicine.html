@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescriptions for id {{ id }}</title>
+</head>
+<body>
+Recommended prescriptions
+<ul>
+{% for item in prescr %}
+    <li>{{ item.medicine }} ({{ item.count }} prescriptions)</li>
+{% endfor %}
+</ul>
+</body>
+</html>

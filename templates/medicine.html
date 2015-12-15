@@ -6,10 +6,14 @@
 </head>
 <body>
 Recommended prescriptions
+<form name="presform">
 <ul>
 {% for item in prescr %}
-    <li>{{ item.medicine }} ({{ item.count }} prescriptions)</li>
+    <input type="radio" name="prescription">{{ item.medicine }} ({{ item.count }} prescriptions)</input><br>
 {% endfor %}
+<input type="radio" name="prescription">Other: <input type="text" id="othermed"></input></input>
 </ul>
+<input type="submit" value="Send to ExpSys"></input>
+</form>
 </body>
 </html>

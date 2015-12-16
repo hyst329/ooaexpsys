@@ -20,5 +20,6 @@ from expsys.views import *
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', index),
+    url(r'^thanks$', thanks),
     url(r'^medicine/(?P<disease_id>\w+)/$', medicines),
 ]

@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Prescriptions for {{ d }}</title>
+    <title>Main Page</title>
 </head>
 <body>
-Recommended prescriptions
+Select disease
 <form method="post">
     {% csrf_token %}
     {{ form }}
     <br>
-    <input type="submit" value="Submit to Database" />
+    <input type="submit" value="Continue" />
 </form>
 </body>
 </html>

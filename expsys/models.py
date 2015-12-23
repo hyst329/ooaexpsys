@@ -1,14 +1,7 @@
 from django.db import models
-
+from stats.models import *
 
 # Create your models here.
-
-
-class Disease(models.Model):
-    name = models.CharField(max_length=80)
-
-    def __str__(self):
-        return "[%03d] %s" % (self.id, self.name)
 
 
 class Medicine(models.Model):

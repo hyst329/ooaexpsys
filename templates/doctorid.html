@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="container">
+    <h1>Doctor <font color=#1e90ff>{{ doc.name }}</font></h1>
+    Today is: {{ today }} (served {{ visits|length }} patients)<br>
+    {% if visits %}
+        <ul>
+            {% for v in visits %}
+                <li>{{ v.patient.name }} ({{ v.visit_date }})</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        No patients served today.
+    {% endif %}
+    {% buttons %}
+        <a href="{% url 'client.views.client_serve' doc.id %}" class="btn btn-success">
+            {% bootstrap_icon "plus-sign" %} Serve another patient
+        </a>
+        <a href="{% url 'client.views.client_index' %}" class="btn btn-default">
+            {% bootstrap_icon "arrow-left" %} Go back
+        </a>
+    {% endbuttons %}
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body>
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<div class="container">
+    <h1>Select doctor</h1>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Disease category </th>
+            <th>{{ year }}</th>
+            <th>{{ year|add:"-1" }}</th>
+            <th>{{ year|add:"-2" }}</th>
+        </tr>
+        {% for d in data %}
+            <tr>
+                <td>{{ d.0 }}</td>
+                <td>{{ d.1 }}</td>
+                <td>{{ d.2 }} ({{ d.3 }}%)</td>
+                <td>{{ d.4 }} ({{ d.5 }}%)</td>
+                <td>{{ d.6 }} ({{ d.7 }}%)</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

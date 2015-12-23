@@ -1,29 +1,28 @@
 from django.shortcuts import render
 from django.http import Http404, HttpResponseServerError, HttpResponse, HttpResponseRedirect
-from expsys.models import *
 from expsys.forms import *
 
 
 # Index
-def index(request):
+def expsys_index(request):
     if request.method == 'POST':
-        form = IndexForm(request.POST)
+        form = ExpsysForm(request.POST)
         if form.is_valid():
             p = request.POST
             if "diseases" in p:
-                return HttpResponseRedirect('/medicine/%s' % p["diseases"])
+                return HttpResponseRedirect('/expsys/medicine/%s' % p["diseases"])
     else:
-        form = IndexForm()
-        return render(request, "index.html", {"form": form})
+        form = ExpsysForm()
+        return render(request, "expsys.html", {"form": form})
 
 
 # After the prescription
-def thanks(request):
+def expsys_thanks(request):
     return HttpResponse("Thank you. Your prescription has been added to the database.")
 
 
 # Most popular medicines by disease name.
-def medicines(request, disease_id):
+def expsys_medicines(request, disease_id):
     if request.method == 'POST':
         form = PrescriptionForm(request.POST, disease_id=disease_id)
         if form.is_valid():

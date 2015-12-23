@@ -32,9 +32,11 @@ class Qualification(models.Model):
 class Patient(models.Model):
     name = models.CharField(max_length=80)
     birth_date = models.DateField(default=datetime.date.today)
+    gender = models.BooleanField(default=False)
 
     def __str__(self):
-        return "[PAT %03d] %s (born %s)" % (self.id, self.name, self.birth_date)
+        return "[PAT %03d] %s (%s, born %s)" % (self.id, self.name, "M" if self.gender else "F",
+                                                self.birth_date)
 
 
 class Visit(models.Model):
@@ -42,6 +44,7 @@ class Visit(models.Model):
     doctor = models.ForeignKey(Doctor)
     visit_date = models.DateTimeField(default=datetime.datetime.now)
     visit_repeat = models.IntegerField(default=1)
+    diagnosis = models.ForeignKey(Disease, default=None)
 
     def __str__(self):
         return "[VIS %03d] Patient %s, Doctor %s: %s (for the %s time)" % \

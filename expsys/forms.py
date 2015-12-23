@@ -3,7 +3,8 @@ from django import forms
 from expsys.models import *
 from stats.models import *
 
-class IndexForm(forms.Form):
+
+class ExpsysForm(forms.Form):
     choices = [(d.id, d.name) for d in Disease.objects.all()]
     diseases = forms.ChoiceField(choices=choices)
 

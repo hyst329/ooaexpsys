@@ -16,10 +16,18 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from expsys.views import *
+from client.views import *
+from stats.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', index),
-    url(r'^thanks$', thanks),
-    url(r'^medicine/(?P<disease_id>\w+)/$', medicines),
+    url(r'^expsys$', expsys_index),
+    url(r'^thanks$', expsys_thanks),
+    url(r'^expsys/medicine/(?P<disease_id>\d+)/$', expsys_medicines),
+    url(r'^$', client_index),
+    url(r'^client/doctor/(?P<doctor_id>\d+)/$', client_doctors),
+    url(r'^client/doctor/(?P<doctor_id>\d+)/serve/$', client_serve),
+    url(r'^stats/category$', stats_bycat),
+    url(r'^stats/spec$', stats_byspec),
+    url(r'^stats/genderage$', stats_bygenderage),
 ]

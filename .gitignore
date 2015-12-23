@@ -110,3 +110,8 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
+
+## Migrations
+/client/migrations/[0-9]*.py
+/expsys/migrations/[0-9]*.py
+/stats/migrations/[0-9]*.py

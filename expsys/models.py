@@ -8,7 +8,7 @@ class Medicine(models.Model):
     name = models.CharField(max_length=80)
 
     def __str__(self):
-        return "[%03d] %s" % (self.id, self.name)
+        return "[MED %03d] %s" % (self.id, self.name)
 
 
 class Prescription(models.Model):

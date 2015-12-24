@@ -39,7 +39,7 @@ def expsys_medicines(request, disease_id):
                     d = Disease.objects.get(id=disease_id)
                     m = Medicine.objects.get(id=medicine_id)
                     Prescription.objects.create(disease=d, medicine=m, count=1)
-            return HttpResponseRedirect('/thanks')
+            return HttpResponseRedirect('/')
     else:
         try:
             form = PrescriptionForm(disease_id=disease_id)

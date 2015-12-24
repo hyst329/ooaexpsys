@@ -17,7 +17,7 @@ def client_index(request):
 
 
 def client_doctors(request, doctor_id):
-    visits = Visit.objects.filter(doctor_id=doctor_id)
+    visits = Visit.objects.filter(doctor_id=doctor_id, visit_date=datetime.date.today())
     return render(request, "doctorid.html", {"doc": Doctor.objects.get(id=doctor_id),
                                              "visits": visits, "today": datetime.date.today()})
 
